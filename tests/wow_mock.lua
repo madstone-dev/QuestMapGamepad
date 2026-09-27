@@ -48,6 +48,7 @@ function methods:UnregisterEvent(event) writable(self); self.events[event]=nil e
 function methods:CreateTexture(name) writable(self); return widget("Texture",name,self) end
 function methods:CreateFontString(name) writable(self); return widget("FontString",name,self) end
 function methods:IsShown() return self.shown end
+function methods:IsVisible() return self.shown and (not self.parent or self.parent:IsVisible()) end
 function methods:Show() writable(self); self.shown=true end
 function methods:Hide()
     writable(self); local old=self.shown; self.shown=false

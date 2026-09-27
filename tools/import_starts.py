@@ -26,7 +26,7 @@ def main():
               f"-- Redistribution source: {URL}\n")
     output = ROOT / "addon/QuestMapGamepad/Data/Starts.lua"
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(header + text, encoding="utf-8", newline="\n")
+    output.write_text(header + text.rstrip() + "\n", encoding="utf-8", newline="\n")
     print(f"Imported MIT start records: {output.name}")
 
 

@@ -61,7 +61,7 @@ end
 
 updateList = function()
     listedPins = {}
-    local mapID = WorldMapFrame and WorldMapFrame:IsShown() and ns.Call(WorldMapFrame.GetMapID, WorldMapFrame)
+    local mapID = WorldMapFrame and WorldMapFrame:IsVisible() and ns.Call(WorldMapFrame.GetMapID, WorldMapFrame)
         or ns.Call(C_Map and C_Map.GetBestMapForUnit, "player")
     local seen = {}
     for _, pin in ipairs(ns.pins) do

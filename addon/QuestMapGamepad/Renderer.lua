@@ -108,7 +108,7 @@ end
 
 local function updateWorld()
     local map = WorldMapFrame
-    if not map or not map:IsShown() or ns.dialogue then
+    if not map or not map:IsVisible() or ns.dialogue then
         worldOverlay:Hide(); mapButton:Hide(); ns.visiblePins = {}; worldLayout = nil; return
     end
     local mapID = ns.Call(map.GetMapID, map)
@@ -149,7 +149,7 @@ local function updateWorld()
 end
 
 local function updateMini()
-    if not Minimap or not Minimap:IsShown() or ns.dialogue or (WorldMapFrame and WorldMapFrame:IsShown()) then
+    if not Minimap or not Minimap:IsVisible() or ns.dialogue or (WorldMapFrame and WorldMapFrame:IsVisible()) then
         miniOverlay:Hide(); miniButton:Hide(); return
     end
     local left, bottom, width, height = rect(Minimap)
