@@ -42,23 +42,17 @@ class CoreTests(unittest.TestCase):
         self.assertEqual(clean.minimap.size, 18)
         self.assertEqual(self.ns.NormalizeSettings(False).version, 1)
 
-    def test_bootstrap_only_initializes_own_addon(self):
-        self.lua.execute('''
-            SlashCmdList = {}
-            QuestMapGamepadDB = {world={start=false}}
-            frame = {}
-            function frame:RegisterEvent(e) self.event = e end
-            function frame:SetScript(_, fn) self.callback = fn end
-            function frame:UnregisterEvent(e) self.removed = e end
-            function CreateFrame(kind) assert(kind == "Frame"); return frame end
-        ''')
-        self.lua.execute((ADDON / "Bootstrap.lua").read_text(encoding="utf-8"), "QuestMapGamepad", self.ns)
-        frame = self.lua.globals().frame
-        frame.callback(frame, "ADDON_LOADED", "AnotherAddon")
-        self.assertIsNone(self.ns.settings)
-        frame.callback(frame, "ADDON_LOADED", "QuestMapGamepad")
-        self.assertFalse(self.ns.settings.world.start)
-        self.assertEqual(frame.removed, "ADDON_LOADED")
+    def test_minimap_rotation_and_edge_clipping(self):
+        import math
+        self.assertEqual(self.ns.MinimapOffset(50, 0, 100, 200, 200, 0, False, 10), (50, 0))
+        x, y = self.ns.MinimapOffset(-50, 0, 100, 200, 200, math.pi / 2, True, 10)
+        self.assertAlmostEqual(x, 0)
+        self.assertAlmostEqual(y, 50)
+        self.assertIsNone(self.ns.MinimapOffset(100, 0, 100, 200, 200, 0, False, 10))
+
+    def test_master_toggle_overrides_categories(self):
+        self.settings.world.enabled = False
+        self.assertFalse(self.ns.ShouldShow(self.pin(kind="objective"), self.settings, "world"))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,5 @@
+<Bindings>
+    <Binding name="QUESTMAPGAMEPAD_TOGGLE" header="QUESTMAPGAMEPAD">
+        QuestMapGamepad_Toggle();
+    </Binding>
+</Bindings>
