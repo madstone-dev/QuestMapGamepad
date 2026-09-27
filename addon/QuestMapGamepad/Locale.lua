@@ -1,0 +1,31 @@
+local _, ns = ...
+local ko = GetLocale() == "koKR"
+ns.L = ko and {
+    title = "QuestMap Gamepad", world = "월드맵", minimap = "미니맵",
+    enabled = "핀 표시", start = "퀘스트 시작 (!)", objective = "진행 중 목표", turnin = "완료 보고 (?)",
+    lowLevel = "저레벨 퀘스트", repeatable = "반복 퀘스트", size = "핀 크기", swapButtons = "패드 확인/취소 바꾸기",
+    close = "닫기", reset = "표시 설정 초기화", previous = "이전", next = "다음", settings = "퀘스트 핀 설정",
+    hint = "방향키/왼쪽 스틱: 이동 · 좌우: 조절 · %s: 확인 · %s: 닫기",
+    unknown = "퀘스트 #%d", more = "외 %d개 — 지도를 확대해 확인하세요.",
+    native = "게임 제공 위치", database = "ATT 시작 위치 (일부 조건 미포함)",
+    coverage = "시작: ATT 데이터 · 목표/보고: 게임 제공 위치\n기본 지도 핀은 이 설정과 별도로 표시될 수 있습니다.",
+    combat = "전투 또는 NPC 대화가 끝난 뒤 설정을 열어 주세요.",
+    ready = "준비 완료. /qmg 또는 지도 옆 Q 버튼으로 설정을 엽니다.",
+    diagnostic = "진단", copied = "아래 내용을 복사해 오류 신고에 첨부하세요.",
+    page = "핀 목록 %d/%d", empty = "현재 표시할 핀이 없습니다.",
+    mapButton = "핀 설정 / 패드로 핀 목록 보기", apiMissing = "일부 지도 API가 없어 표시가 제한됩니다.",
+} or {
+    title = "QuestMap Gamepad", world = "World map", minimap = "Minimap",
+    enabled = "Show pins", start = "Quest starts (!)", objective = "Active objectives", turnin = "Turn-ins (?)",
+    lowLevel = "Low-level quests", repeatable = "Repeatable quests", size = "Pin size", swapButtons = "Swap controller confirm/cancel",
+    close = "Close", reset = "Reset display settings", previous = "Previous", next = "Next", settings = "Quest pin settings",
+    hint = "D-pad/left stick: move · Left/right: adjust · %s: confirm · %s: close",
+    unknown = "Quest #%d", more = "%d more — zoom in to inspect.",
+    native = "Game-provided location", database = "ATT start location (some conditions unavailable)",
+    coverage = "Starts: ATT data · Objectives/turn-ins: game POIs\nNative map pins may remain visible independently.",
+    combat = "Open settings after combat or NPC dialogue ends.",
+    ready = "Ready. Open settings with /qmg or the Q button beside the map.",
+    diagnostic = "Diagnostics", copied = "Copy this text into a bug report.",
+    page = "Pin list %d/%d", empty = "No pins to display here.",
+    mapButton = "Pin settings / browse pins with controller", apiMissing = "Some map APIs are unavailable; coverage is limited.",
+}

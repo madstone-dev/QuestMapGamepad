@@ -1,10 +1,16 @@
 ## Interface: 16001
 ## Title: QuestMap Gamepad
-## Notes: Development foundation for native-gamepad-friendly quest pins. Pin rendering is not implemented yet.
+## Notes: Quest starts, objectives and turn-ins on the world map and minimap, with gamepad settings.
 ## Author: madstone-dev
-## Version: 0.1.0-dev
+## Version: 0.2.0
 ## SavedVariables: QuestMapGamepadDB
 ## X-License: MIT
 
+Locale.lua
 Core.lua
+Data\Starts.lua
+Model.lua
+Coordinates.lua
+Renderer.lua
+Settings.lua
 Bootstrap.lua
