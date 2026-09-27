@@ -27,6 +27,7 @@ def build(output_dir=None):
         for name, data in sorted(files.items()):
             entry = zipfile.ZipInfo("QuestMapGamepad/" + name, date_time=(2026, 9, 27, 0, 0, 0))
             entry.compress_type = zipfile.ZIP_DEFLATED
+            entry.create_system = 3  # Stable metadata on both Windows and Linux.
             entry.external_attr = 0o644 << 16
             archive.writestr(entry, data)
     digest = hashlib.sha256(target.read_bytes()).hexdigest()

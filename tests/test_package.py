@@ -19,6 +19,7 @@ class PackageTests(unittest.TestCase):
             self.assertEqual(module.build(directory).read_bytes(), first)
             with zipfile.ZipFile(path) as archive:
                 names = archive.namelist()
+                self.assertTrue(all(entry.create_system == 3 for entry in archive.infolist()))
                 self.assertTrue(all(n.startswith("QuestMapGamepad/") for n in names))
                 self.assertIn("QuestMapGamepad/Licenses/ATT-MIT.txt", names)
                 self.assertIn("QuestMapGamepad/THIRD_PARTY_NOTICES.md", names)
